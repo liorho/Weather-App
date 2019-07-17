@@ -3,9 +3,8 @@ const app = express()
 const path = require('path')
 const api = require('./server/routes/api')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/peopleDB', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/weatherDB', { useNewUrlParser: true })
 const bodyParser = require('body-parser')
-
 
 
 app.use(bodyParser.json())
