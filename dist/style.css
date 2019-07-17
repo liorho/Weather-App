@@ -1,0 +1,13 @@
+.city-input {
+    display: inline-block;
+    height: 6vh;
+
+}
+
+.button {
+    display: inline-block;
+    background-color: rgb(13, 43, 124);
+    color: white;
+    padding: 2vh 4vw;
+    
+}
