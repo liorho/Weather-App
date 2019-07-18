@@ -9,6 +9,14 @@ class Renderer {
         }
     }
 
+    renderDelete(){
+        const source = $('#delete-template').html();
+        const template = Handlebars.compile(source);
+        const newHTML = template();
+        $(".cities").append(newHTML);
+
+    }
+
 
 
 }

@@ -1,13 +1,120 @@
+body{
+    margin: 0;
+    background-image: url(https://images.pexels.com/photos/325117/pexels-photo-325117.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.header{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 5vw;
+    display:flex;
+    margin: 2vh 2.7vw;
+    background-color: inherit;
+}
+
+
 .city-input {
+    font: inherit;
     display: inline-block;
-    height: 6vh;
+    height: auto;
+    width: 80vw;
+    padding-left: 2vw;
+    margin-right: 2vw;
 
 }
 
 .button {
+    font: inherit;
     display: inline-block;
-    background-color: rgb(13, 43, 124);
+    background-color: rgb(0, 22, 80);
     color: white;
-    padding: 2vh 4vw;
+    border: 0.1vh solid white;
+    padding: 1.5vh 4vw;
+
+ 
     
+}
+.cities{
+    display: grid;
+    grid-gap: 0.8vh;
+    margin-top: 1vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.city{
+    display: grid;
+    grid-template-columns: 9fr 3fr 3fr;
+    grid-template-areas: 
+    "n i t"
+    "d i t";
+    padding: 0.5vh;
+    border-radius: 0.9vh;
+    background-color: rgb(250, 243, 243, 0.6);
+    margin: 1.5vw 1.9vw;
+
+}
+
+
+.cityName{
+    display: grid;
+    grid-area: n;
+    font-size: 8.3vw;
+    font-weight: bold;
+    padding-right: 1vw;
+    
+}
+
+.lastUpdated{
+    display: grid;
+    grid-area: d;
+    font-size: 3.5vw;
+    padding-right: 1vw;
+}
+
+
+
+.img{
+    display: grid;
+    grid-area: i;
+    text-align: center;
+    margin: auto;
+    width: 17vw;
+}
+
+.condition{
+    display: grid;
+    grid-area: c;
+    /* font-size: 7vw; */
+}    
+.tempAndButtons{
+    display: grid;
+    grid-area: t;
+    grid-template-areas: 
+    "t t t"
+    ". d u"
+}
+.temperature{
+    display: grid;
+    grid-area: t;
+    font-size: 10vw;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    padding-right: 1vw;
+    }
+
+.delete-button{
+    display: grid;
+    grid-area: d;
+    height: 1.2em;;
+}
+
+.update-button{
+    display: grid;
+    grid-area: u;
+    height: 1.2em;
+    margin-left: 1vh;
 }

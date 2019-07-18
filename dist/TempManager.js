@@ -3,28 +3,51 @@ class TempManager {
         this.cityData = []
     }
 
+    calcTimeDiff(lastUpdated) {
+        lastUpdated = moment(lastUpdated)
+        let now = moment()
+        let diff = now.diff(lastUpdated, 'minutes')
+        diff = diff % 60
+        return (diff)
+    }
+
     // Get Cities Array
-    getDataFromDB() {
-        $.get('/cities', function (cities) {
-            if (cities) this.cityData = cities
-            return this.cityData
-        })
+    async getDataFromDB() {
+        let cities = await $.get('/cities')
+        if (cities) this.cityData = cities
+        
+        return this.cityData
     }
 
     async getCityData(cityName) {
-        let weather = await $.get(`/city/:${cityName}`)
-            this.cityData.push({
-            cityName: weather.location.name,
-            temperature: weather.current.temp_c,
-            condition: weather.current.condition.text,
-            conditionIcon: weather.current.condition.icon,
-            lastUpdated: weather.current.last_updated
-        })
-            return(this.cityData)
+        console.log(this.cityData)
+        if (this.cityData) {
+            let existingCity = this.cityData.some(c => (c.name).toLowerCase() === cityName.toLowerCase())
+
+
+            if (!existingCity) {
+                let weather = await $.get(`/city/:${cityName}`)
+
+                let diff = this.calcTimeDiff(weather.current.last_updated)
+
+                this.cityData.push({
+                    name: weather.location.name,
+                    temperature: Math.floor(weather.current.temp_c),
+                    condition: weather.current.condition.text,
+                    conditionIcon: weather.current.condition.icon,
+                    lastUpdated: weather.current.last_updated,
+                    diff: diff
+                })
+                this.saveCity(weather.location.name)
+            }
+        }
+
+
+        return (this.cityData)
     }
 
-    saveCity(cityName){
-        let city = this.cityData.find(c => c.cityName = cityName)
+    saveCity(cityName) {
+        let city = this.cityData.find(c => c.name === cityName)
 
         $.ajax({
             type: "POST",
@@ -37,7 +60,7 @@ class TempManager {
 
     }
 
-    removeCity(cityName){
+    removeCity(cityName) {
         $.ajax({
             type: "DELETE",
             url: `/city/${cityName}`,

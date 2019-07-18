@@ -3,10 +3,11 @@ const Schema = mongoose.Schema
 
 const citySchema = new Schema({
     name: String,
-    updatedAt: Date,
+    lastUpdated: Date,
     temperature: Number,
     condition: String,
-    conditionPic: String
+    conditionIcon: String,
+    diff: Number
 })
 
 const City = mongoose.model("city", citySchema)
