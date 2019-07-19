@@ -37,6 +37,7 @@ router.put('/city', function (req, res) {
         city.conditionIcon = data.conditionIcon
         city.lastUpdated = data.lastUpdated
         city.diff = data.diff
+        city.lastRefreshed = data.lastRefreshed
         city.save()
         res.send(city)
     })

@@ -22,7 +22,6 @@ body{
     width: 80vw;
     margin-right: 2vw;
     padding: 2vh 2vw;
-
 }
 
 .button {
@@ -44,14 +43,14 @@ body{
 .city{
     display: grid;
     grid-template-columns: 9fr 3fr 3fr;
+    grid-template-rows: 8vh 0.3fr;
     grid-template-areas: 
-    "n i t"
-    "d i t";
-    padding: 1.5vh;
+    "n t i"
+    "d t b";
+    padding: 0.5vh 2vw;
     border-radius: 0.9vh;
-    background-color: rgba(255, 255, 255, 0.5);
-    margin: 1.5vw 1.9vw;
-
+    background-color: rgba(255, 247, 223, 0.7);
+    margin: 0.3vh 1.9vw;
 }
 
 .cityName{
@@ -59,8 +58,7 @@ body{
     grid-area: n;
     font-size: 7.5vw;
     font-weight: bolder;
-    padding-right: 1vw;
-    
+    margin-top: 2vh;
 }
 
 .lastUpdated{
@@ -68,15 +66,15 @@ body{
     grid-area: d;
     font-size: 3.5vw;
     padding-right: 1vw;
-    padding-top:1vh;
+    padding-top: 1vh;
 }
 
 .img{
     display: grid;
     grid-area: i;
     text-align: center;
-    margin: auto;
-    width: 15vw;
+    padding-left: 4vw;
+    width: 13vw;
 }
 
 .condition{
@@ -85,41 +83,30 @@ body{
 }  
 
 .tempAndButtons{
-    display: grid;
-    grid-area: t;
-    grid-template-areas: 
-    "t t t"
-    ". d u";
-    float: right;
+    display: flex;
+    grid-area: b;
+    justify-content: flex-end;
 }
 
 .temperature{
     display: grid;
     grid-area: t;
-    font-size: 8.5vw;
+    font-size: 10.5vw;
     font-weight: bold;
-    text-align: end;
-    margin: auto;
+    text-align: start;
     padding-right: 2vw;
     width: 100%;
+    margin-top: 1.5vh;
+    color: rgb(4, 4, 73);
 }
 
 .delete-button{
-    display: grid;
-    grid-area: d;
     height: 1.2em;
-    padding-right: 1vw;
-    padding-top: 1vh;
-    text-align: end;
-    width: 1.4em;
+    width: 1.2em;
 }
 
 .update-button{
-    display: grid;
-    grid-area: u;
     height: 1.2em;
-    padding-top: 1vh;
-    text-align: start
-    width: 1.4em;
-    /* width: 100%; */
+    width: 1.2em;
+    padding-left: 2vw;
 }
