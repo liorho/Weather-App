@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather-App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://img.pngio.com/weather-targeting-weather-png-350_350.jpg">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbtbpmRbB5mkmmCGbwA0Jy5ehBwQzBQuiA08H-xKvf9H-DcAnB">
     <link href="https://fonts.googleapis.com/css?family=Bahianita|Montserrat&display=swap" rel="stylesheet">
 </head>
 
@@ -20,6 +20,7 @@
         </div>
         <div class="cities"></div>
     </div>
+
     <script id='city-template' type='text/x-handlebars-template'>
      {{#each allCityData}}
             <div class="city">
@@ -27,17 +28,13 @@
                     <div class="lastUpdated">Updated {{diff}} min. ago</div>
                     <div class="tempAndButtons">
                         <div class ="temperature">{{temperature}}&#176c</div>
-                        <img class="delete-button" src="https://image.flaticon.com/icons/png/512/61/61848.png"
-                         onclick="deleteCity()">
-                         <img class="update-button" src="https://www.flaticon.com/premium-icon/icons/svg/1944/1944419.svg"
-                         onclick="updateCity()">
+                        <img class="delete-button" src="https://image.flaticon.com/icons/png/512/61/61848.png">
+                         <img class="update-button" src="https://www.flaticon.com/premium-icon/icons/svg/1944/1944419.svg">
                     </div>
                    <img class='img' src="{{conditionIcon}}">
             </div>  
       {{/each}}
     </script>
-
-
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>

@@ -4,9 +4,8 @@ class TempManager {
     }
 
     calcTimeDiff(lastUpdated) {
-        lastUpdated = moment(lastUpdated)
-        let now = moment()
-        let diff = now.diff(lastUpdated, 'minutes')
+        let diff = moment().diff(moment(lastUpdated), 'minutes')
+        diff < 0 ? diff = -diff : null
         diff = diff % 60
         return (diff)
     }
@@ -15,34 +14,25 @@ class TempManager {
     async getDataFromDB() {
         let cities = await $.get('/cities')
         if (cities) this.cityData = cities
-        
         return this.cityData
     }
 
+    // Get City Data & Save on DB
     async getCityData(cityName) {
-        console.log(this.cityData)
-        if (this.cityData) {
-            let existingCity = this.cityData.some(c => (c.name).toLowerCase() === cityName.toLowerCase())
-
-
-            if (!existingCity) {
-                let weather = await $.get(`/city/:${cityName}`)
-
-                let diff = this.calcTimeDiff(weather.current.last_updated)
-
-                this.cityData.push({
-                    name: weather.location.name,
-                    temperature: Math.floor(weather.current.temp_c),
-                    condition: weather.current.condition.text,
-                    conditionIcon: weather.current.condition.icon,
-                    lastUpdated: weather.current.last_updated,
-                    diff: diff
-                })
-                this.saveCity(weather.location.name)
-            }
-        }
-
-
+        let weather = await $.get(`/city/:${cityName}`)
+        let existingCity = this.cityData.some(c => (c.name).toLowerCase() === weather.location.name.toLowerCase())
+        if (!existingCity) {
+            let diff = this.calcTimeDiff(weather.current.last_updated)
+            this.cityData.unshift({
+                name: weather.location.name,
+                temperature: Math.floor(weather.current.temp_c),
+                condition: weather.current.condition.text,
+                conditionIcon: weather.current.condition.icon,
+                lastUpdated: weather.current.last_updated,
+                diff: diff
+            })
+            this.saveCity(weather.location.name)
+        } else console.log(`${weather.location.name} (you typed "${cityName}") is already in the DB`)
         return (this.cityData)
     }
 
@@ -53,21 +43,34 @@ class TempManager {
             type: "POST",
             url: "/city",
             data: city,
-            success: function (response) {
-                console.log(cityName + " added to DB")
-            }
+            success: response => console.log(cityName + "was added to DB")
         })
-
     }
 
     removeCity(cityName) {
         $.ajax({
             type: "DELETE",
             url: `/city/${cityName}`,
-            success: function (response) {
-                console.log(cityName + " removed from DB")
-            }
+            success: response => console.log(cityName + "was removed from DB")
         })
     }
 
+    async updateCity(cityName) {
+        let weather = await $.get(`/city/:${cityName}`)
+        let diff = this.calcTimeDiff(weather.current.last_updated)
+        let newWeather = {
+            name: weather.location.name,
+            temperature: Math.floor(weather.current.temp_c),
+            condition: weather.current.condition.text,
+            conditionIcon: weather.current.condition.icon,
+            lastUpdated: weather.current.last_updated,
+            diff: diff
+        }
+        $.ajax({
+            type: "PUT",
+            url: `/city`,
+            data: newWeather,
+            success: response => console.log(cityName + "was updated")
+        })
+    }
 }
