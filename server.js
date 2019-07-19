@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const api = require('./server/routes/api')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/weatherDB', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/weatherDB', { useNewUrlParser: true })
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
@@ -12,6 +12,6 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use( '/', api )
 
-const port = 4200
+const port = process.env.PORT || 4200
 app.listen(port, function(){
 console.log(`Running server on port ` + port)})
