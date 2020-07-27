@@ -4,19 +4,19 @@ const renderer = new Renderer
 
 setCursor = () => $('.city-input').focus();
 
-const loadPage = async function() {
-    let cityData = await tempManager.getDataFromDB()
-    renderer.renderData(cityData.reverse()) 
+loadPage = async () => {
+    const cityData = await tempManager.getDataFromDB()
+    renderer.renderData(cityData.reverse())
 }
 
-const handleSearch = async function() {
-    let cityName = $(".city-input").val()
+handleSearch = async () => {
+    const cityName = $(".city-input").val()
     $('.city-input').val("");
-    let cityData = await tempManager.getCityData(cityName)
+    await tempManager.getCityData(cityName)
     renderer.renderData(tempManager.cityData)
 }
 
-//***************************************************************/
+//***************************************************************
 
 setCursor()
 loadPage()
@@ -30,7 +30,8 @@ $(".cities").on("click", ".delete-button", function(){
 
 $(".cities").on("click", ".update-button", async function(){
     let cityName = $(this).closest(".city").find(".cityName").html()
-    let update = await tempManager.updateCity(cityName)
+    console.log(cityName)
+    await tempManager.updateCity(cityName)
     loadPage()
 })
 

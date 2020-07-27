@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LH Weather</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" href="./assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Bahianita|Montserrat&display=swap" rel="stylesheet">
 </head>
 
@@ -32,16 +32,16 @@
                         <img class="update-button" src="https://www.flaticon.com/premium-icon/icons/svg/1944/1944419.svg">
                     </div>
                    <img class='img' src="{{conditionIcon}}">
-            </div>  
+            </div>
       {{/each}}
     </script>
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="moment/moment.js"></script>
-    <script src="TempManager.js"></script>
-    <script src="Renderer.js"></script>
-    <script src="main.js"></script>
+    <script src="./models/TempManager.js"></script>
+    <script src="./views/Renderer.js"></script>
+    <script src="./scripts/main.js"></script>
 </body>
 
 </html>
