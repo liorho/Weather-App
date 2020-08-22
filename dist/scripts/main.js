@@ -33,6 +33,7 @@ $('.cities').on('click', '.update-btn', async function () {
 
 $(document).on('keypress', function (e) {
   if (e.which == 13) {
-    handleSearch();
+      handleSearch();
+      $('.city-input').blur()
   }
 });
