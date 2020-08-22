@@ -61,7 +61,8 @@ class TempManager {
     $.ajax({
       type: 'DELETE',
       url: `/city/${cityName}`,
-      success: (response) => console.log(cityName + ' was removed from DB'),
+      success: (response) => console.log(response),
+      error: (error) => console.log(error.statusText)
     });
   }
 

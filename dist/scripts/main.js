@@ -1,6 +1,8 @@
 const tempManager = new TempManager();
 const renderer = new Renderer();
 
+// const setCursor = () => $('.city-input').focus();
+
 const loadPage = async () => {
   const cityData = await tempManager.getDataFromDB();
   renderer.renderData(cityData.reverse());
@@ -15,7 +17,7 @@ const handleSearch = async () => {
 
 //***************************************************************
 
-setCursor();
+// setCursor();
 loadPage();
 
 //************** EVENT-LISTENERS *********************************
@@ -33,7 +35,7 @@ $('.cities').on('click', '.update-btn', async function () {
 
 $(document).on('keypress', function (e) {
   if (e.which == 13) {
-      handleSearch();
-      $('.city-input').blur()
+    handleSearch();
+    $('.city-input').blur();
   }
 });

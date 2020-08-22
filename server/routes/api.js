@@ -49,7 +49,7 @@ router.put('/city', function (req, res) {
 // Delete city from DB
 router.delete('/city/:cityName', function (req, res) {
     let { cityName } = req.params
-    City.findOneAndRemove({ name: cityName }).then(city => res.send(city + " was deleted"))
+    City.findOneAndRemove({ name: cityName }).then(city => res.send(city.name + " was deleted"))
 })
 
 module.exports = router
