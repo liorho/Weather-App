@@ -25,6 +25,8 @@ class TempManager {
   async getCityData(cityName) {
     let weatherInfo = await $.get(`/city/${cityName}`);
     weatherInfo = JSON.parse(weatherInfo.body);
+    //   weatherInfo = weatherInfo.body;
+
     let isCityExist = this.cityData.some(
       (c) => c.name.toLowerCase() === weatherInfo.name.toLowerCase()
     );
@@ -68,8 +70,7 @@ class TempManager {
     weatherInfo = JSON.parse(weatherInfo.body);
     let lastUpdated = new Date(parseInt(weatherInfo.dt) * 1000);
     let diff = this.calcTimeDiff(lastUpdated);
-      let lastRefreshed = moment().format();
-      console.log(weatherInfo)
+    let lastRefreshed = moment().format();
     let newWeather = {
       name: weatherInfo.name,
       temperature: Math.round(weatherInfo.main.temp - 273),

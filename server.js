@@ -7,15 +7,14 @@ const bodyParser = require('body-parser')
 
 require('dotenv').config()
 
-const mongooseConnectionStr = process.env.MONGODB_URI || process.env.MONGODB_LOCAL
-mongoose.connect(mongooseConnectionStr, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
-app.use( '/', api )
+app.use('/', api)
 
-const PORT = process.env.PORT || process.env.DEV_PORT
+const PORT = process.env.PORT
 app.listen(PORT, function () {
 console.log(`Running server on port ${PORT}`)})

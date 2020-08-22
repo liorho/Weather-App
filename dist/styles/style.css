@@ -44,7 +44,7 @@ body{
     display: grid;
     grid-template-columns: 9fr 3fr 3fr;
     grid-template-rows: 8vh 0.3fr;
-    grid-template-areas: 
+    grid-template-areas:
     "n t i"
     "d t b";
     padding: 0.5vh 2vw;
@@ -80,9 +80,9 @@ body{
 .condition{
     display: grid;
     grid-area: c;
-}  
+}
 
-.tempAndButtons{
+.update_delete_btns{
     display: flex;
     grid-area: b;
     justify-content: flex-end;
@@ -100,12 +100,12 @@ body{
     color: rgb(4, 4, 73);
 }
 
-.delete-button{
+.delete-btn{
     height: 1.2em;
     width: 1.2em;
 }
 
-.update-button{
+.update-btn{
     height: 1.2em;
     width: 1.2em;
     padding-left: 2vw;

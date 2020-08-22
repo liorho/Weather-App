@@ -1,44 +1,49 @@
+const tempManager = new TempManager();
+const renderer = new Renderer();
 
-const tempManager = new TempManager
-const renderer = new Renderer
+// window.addEventListener('load', () => {
+//   loadPage();
+//   if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('../serviceWorker.js');
+//   }
+// });
 
-setCursor = () => $('.city-input').focus();
 
-loadPage = async () => {
-    const cityData = await tempManager.getDataFromDB()
-    renderer.renderData(cityData.reverse())
-}
 
-handleSearch = async () => {
-    const cityName = $(".city-input").val()
-    $('.city-input').val("");
-    await tempManager.getCityData(cityName)
-    renderer.renderData(tempManager.cityData)
-}
+const setCursor = () => $('.city-input').focus();
+
+const loadPage = async () => {
+  const cityData = await tempManager.getDataFromDB();
+  renderer.renderData(cityData.reverse());
+};
+
+const handleSearch = async () => {
+  const cityName = $('.city-input').val();
+  $('.city-input').val('');
+  await tempManager.getCityData(cityName);
+  renderer.renderData(tempManager.cityData);
+};
 
 //***************************************************************
 
-setCursor()
-loadPage()
+setCursor();
+loadPage();
 
 //************** EVENT-LISTENERS *********************************
-$(".cities").on("click", ".delete-button", function(){
-    let cityName = $(this).closest(".city").find(".cityName").html()
-    tempManager.removeCity(cityName)
-    loadPage()
-})
-
-$(".cities").on("click", ".update-button", async function(){
-    let cityName = $(this).closest(".city").find(".cityName").html()
-    console.log(cityName)
-    await tempManager.updateCity(cityName)
-    loadPage()
-})
-
-$(document).on('keypress', function (e) {
-    if (e.which == 13) {
-        handleSearch();
-    }
+$('.cities').on('click', '.delete-btn', function () {
+  let cityName = $(this).closest('.city').find('.cityName').html();
+  tempManager.removeCity(cityName);
+  loadPage();
 });
 
+$('.cities').on('click', '.update-btn', async function () {
+  let cityName = $(this).closest('.city').find('.cityName').html();
+  await tempManager.updateCity(cityName);
+  loadPage();
+});
 
+$(document).on('keypress', function (e) {
+  if (e.which == 13) {
+    handleSearch();
+  }
+});
