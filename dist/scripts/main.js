@@ -1,17 +1,6 @@
 const tempManager = new TempManager();
 const renderer = new Renderer();
 
-// window.addEventListener('load', () => {
-//   loadPage();
-//   if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('../serviceWorker.js');
-//   }
-// });
-
-
-
-const setCursor = () => $('.city-input').focus();
-
 const loadPage = async () => {
   const cityData = await tempManager.getDataFromDB();
   renderer.renderData(cityData.reverse());
