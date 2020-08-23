@@ -1,6 +1,6 @@
 {
-  "short_name": "LH-Weather",
-  "name": "LH-Weather",
+  "short_name": "LH Weather",
+  "name": "LH Weather",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
@@ -19,7 +19,7 @@
       "type": "image/png"
     },
     {
-      "src": "./assets/weather2.png",
+      "src": "./assets/weather3.png",
       "sizes": "512x512",
       "type": "image/png"
     },
