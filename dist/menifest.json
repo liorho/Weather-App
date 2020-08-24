@@ -9,22 +9,12 @@
   "scope": "/",
   "icons": [
     {
-      "src": "./assets/weather-1024.png",
-      "sizes": "1024x1024",
-      "type": "image/png"
-    },
-    {
-      "src": "./assets/favicon.png",
-      "sizes": "225x225",
-      "type": "image/png"
-    },
-    {
       "src": "./assets/weather-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "./assets/icon.png",
+      "src": "./assets/weather-icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
