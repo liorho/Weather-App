@@ -1,7 +1,7 @@
 const tempManager = new TempManager();
 const renderer = new Renderer();
 
-// const setCursor = () => $('.city-input').focus();
+const setCursor = () => $('.city-input').focus();
 
 const loadPage = async () => {
   const cityData = await tempManager.getDataFromDB();
@@ -17,7 +17,7 @@ const handleSearch = async () => {
 
 //***************************************************************
 
-// setCursor();
+setCursor();
 loadPage();
 
 //************** EVENT-LISTENERS *********************************
