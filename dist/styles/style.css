@@ -19,9 +19,9 @@ body{
     font: inherit;
     display: inline-block;
     height: auto;
-    width: 80vw;
-    margin-right: 2vw;
+    width: 100%;
     padding: 2vh 2vw;
+    border-radius: 0.9vh;
 }
 
 .button {

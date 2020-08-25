@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use('/', api)
 
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
 const PORT = process.env.PORT
 app.listen(PORT, function () {
 console.log(`Running server on port ${PORT}`)})
