@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>LH Weather</title>
     <link rel="stylesheet" href="./styles/style.css" />
-
+    <!-- PWA -->
+    <meta name="theme-color" >
     <link rel="manifest" href="./menifest.json" />
     <link rel="icon" href="./assets/weather-icon-512.png" />
     <link rel="apple-touch-icon" sizes="512x512" href="./assets/weather-icon-512.png" />
-
+    <!-- /PWA -->
     <link href="https://fonts.googleapis.com/css?family=Bahianita|Montserrat&display=swap" rel="stylesheet" />
   </head>
 
@@ -18,7 +19,6 @@
     <div class="container">
       <div class="header">
         <input class="city-input" type="text" placeholder="Enter City Name" />
-        <!-- <div class="button" onclick="handleSearch()">Search</div> -->
       </div>
       <div class="cities"></div>
     </div>
@@ -42,6 +42,7 @@
       {{/each}}
     </script>
 
+    <!-- PWA -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
@@ -56,6 +57,7 @@
         });
       }
     </script>
+    <!-- /PWA -->
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
