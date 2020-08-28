@@ -19,13 +19,13 @@ loadPage();
 
 //************** EVENT-LISTENERS *********************************
 $('.cities').on('click', '.delete-btn', function () {
-  let cityName = $(this).closest('.city').find('.cityName').html();
+  let cityName = $(this).closest('.city').find('.cityName').html().trim();
   tempManager.removeCity(cityName);
   loadPage();
 });
 
 $('.cities').on('click', '.update-btn', async function () {
-  let cityName = $(this).closest('.city').find('.cityName').html();
+  let cityName = $(this).closest('.city').find('.cityName').html().trim();
   await tempManager.updateCity(cityName);
   loadPage();
 });
